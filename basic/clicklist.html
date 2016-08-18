@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>列表+点击事件</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="item in items">
+            <span>{{item.text}}</span>
+            <button v-on:click="deleteLi($index)">删除</button>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>
+<script>
+    (function(){
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                items:[
+                    { text: 'Learn JavaScript' },
+                    { text: 'Learn Vue.js' },
+                    { text: 'Build Something Awesome' }
+                ]
+            },
+            methods:{
+                deleteLi:function(index){
+                    this.items.splice(index,1);
+                }
+            }
+        });
+    })();
+
+
+</script>
