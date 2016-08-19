@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>样式</title>
+    <script src="../vue.js"></script>
+    <style>
+        .classA{
+            background-color:blue;
+
+        }
+        .classB{
+            height:100px;
+            width:100px;
+        }
+    </style>
+</head>
+<body>
+    <div  id="app" v-bind:class="{'classA':isA,'classB':isB}">
+        aaaa
+    </div>
+
+    <div  id="app2" v-bind:class="classObject">
+        bb
+    </div>
+
+    <div  id="app3" v-bind:class="[classA,classB]">
+        cc
+    </div>
+
+    <div id="app4" v-bind:style="{backgroundColor:backgroundColor,width:width+'px',height:height+'px'}">
+        dd
+    </div>
+</body>
+</html>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            isA:true,
+            isB:true
+        }
+    });
+    var vm2 = new Vue({
+        el:'#app2',
+        data:{
+            classObject:{
+                'classA':true,
+                'classB':true
+            }
+
+        }
+    });
+    var vm3 = new Vue({
+        el:'#app3',
+        data:{
+            classA:'classA',
+            classB:'classB'
+
+
+        }
+    });
+    var vm4 = new Vue({
+        el:'#app4',
+        data:{
+            backgroundColor:'red',
+            width:200,
+            height:300
+        }
+    });
+</script>
