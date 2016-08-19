@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>过滤器</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{content | capitalize}}
+    </div>
+</body>
+</html>
+<script>
+    var vm = new Vue({
+        //目标节点
+        el:'#app',
+        data:{
+            num:1,
+            content:'abcd'
+        }
+    });
+
+
+</script>

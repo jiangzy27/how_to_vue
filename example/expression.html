@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>支持js的表达式</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{num*2+1}}
+    {{content.split('').reverse().join('')}}
+    {{num==2 ? 'yes' : 'no'}}
+</div>
+</body>
+</html>
+<script>
+    var vm = new Vue({
+        //目标节点
+        el:'#app',
+        data:{
+            num:1,
+            content:'abcd'
+        }
+    });
+
+</script>
