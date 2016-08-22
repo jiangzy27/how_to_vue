@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>语法糖：简化写法</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <my-component1>
+
+    </my-component1>
+</div>
+
+<div id="app2">
+    <my-component2>
+
+    </my-component2>
+</div>
+</body>
+</html>
+<script>
+    //省了extend操作，直接后面跟对象
+    Vue.component('my-component1',{
+        template:'<div>this is a test!</div>'
+    });
+    var vm = new Vue({
+        el:'#app'
+    });
+
+    var vm2 = new Vue({
+        el:'#app2',
+        components:{
+            'my-component2':{
+                template:'<div>test a test</div>'
+            }
+        }
+    });
+</script>

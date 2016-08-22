@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>父子组件</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <parent-component>
+
+    </parent-component>
+</div>
+</body>
+</html>
+<script>
+
+
+    //父子组件
+    var Child = Vue.extend({
+        template:'<p>i am the child!</p>'
+    });
+    var Parent = Vue.extend({
+        //注意，只能在模板里面使用子组件，而不是用嵌套方式。
+        template:'<p>i am parent</p><child-component></child-component>',
+        components:{
+            'child-component':Child
+        }
+    });
+    //Vue.component('parent-component',Parent);
+
+    var app = new Vue({
+        el:'#app',
+        components:{
+            'parent-component':Parent
+        }
+    });
+</script>
