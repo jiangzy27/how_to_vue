@@ -2,9 +2,68 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>Ajax交互</title>
+    <script src="../vue.js"></script>
+    <script src="../jquery.js"></script>
 </head>
 <body>
+<div id="app">
+    <ul v-for="item in data">
+        <li>{{item['id']}}</li>
+        <li>{{ item['name'] }}</li>
+    </ul>
 
+    <my-component v-bind:data="data">
+
+    </my-component>
+</div>
 </body>
 </html>
+
+
+<template id="myComponent">
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+        </tr>
+        <tr v-for="item in data">
+            <td>{{item['id']}}</td>
+            <td>{{ item['name'] }}</td>
+        </tr>
+
+    </table>
+</template>
+
+
+<script>
+    (function(){
+        Vue.component('my-component',{
+            //模板信息
+            template:'#myComponent',
+            //属性一定要声明，否则不会请求到数据
+            props:{
+                data:Array
+            }
+
+        });
+    })();
+
+    (function(){
+        //声明一个组件
+
+
+        var vm = new Vue({
+            el: '#app',
+            data:{},
+            init:function(){
+                $.getJSON('./demo.json',function(data){
+                    this.$data = data;
+                    console.log(this.$data);
+                }.bind(this));
+            }
+
+        });
+    })();
+
+</script>
